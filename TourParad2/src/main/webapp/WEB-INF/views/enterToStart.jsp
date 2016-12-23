@@ -12,8 +12,8 @@ To try all the opportunities our site gives, please enter your account by pushin
 
 If You do not have an account, please register. Don't worry - it will take just a few seconds!
 
-<a href="login"><button>log in</button></a>
-<a href="registration"><button>registration</button></a>
+<a href="touristLogin"><button>log in</button></a>
+<a href="touristRegistration"><button>registration</button></a>
 
 
 </body>

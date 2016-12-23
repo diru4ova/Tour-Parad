@@ -29,7 +29,6 @@ public class Agency {
 	private String bank_name;
 	private long bank_account;
 	private String email;
-	private String facebook_account;
 	private String password;
 	
 	public Agency() {
@@ -40,7 +39,7 @@ public class Agency {
 	
 	public Agency(String name, String official_name, String owner_form, String adress, int phone_number,
 			String tax_form, long tax_payment_id, int bank_code, String bank_name, long bank_account, String email,
-			String facebook_account, String password) {
+			 String password) {
 		super();
 		this.name = name;
 		this.official_name = official_name;
@@ -53,7 +52,6 @@ public class Agency {
 		this.bank_name = bank_name;
 		this.bank_account = bank_account;
 		this.email = email;
-		this.facebook_account = facebook_account;
 		this.password = password;
 	}
 
@@ -170,14 +168,7 @@ public class Agency {
 		this.email = email;
 	}
 
-	public String getFacebook_account() {
-		return facebook_account;
-	}
-
-	public void setFacebook_account(String facebook_account) {
-		this.facebook_account = facebook_account;
-	}
-
+	
 	public String getPassword() {
 		return password;
 	}

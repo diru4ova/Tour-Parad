@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registration successful</title>
+<title>Agency profile</title>
 </head>
 <body>
 
-Super! You have registered successfully.
-Please, log in to activate Your account.
-<a href="touristLogin"><button>log in</button></a>
+<a href="updateProfile"><button>update profile</button></a>
+
+${agency}
 
 </body>
 </html>

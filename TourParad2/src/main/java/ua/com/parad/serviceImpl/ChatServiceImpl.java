@@ -2,6 +2,7 @@ package ua.com.parad.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.com.parad.dao.ChatDao;
@@ -10,7 +11,7 @@ import ua.com.parad.service.ChatService;
 
 @Service
 public class ChatServiceImpl implements ChatService{
-	
+	@Autowired
 	private ChatDao chatDao;
 
 	public void create(Chat chat) {

@@ -2,6 +2,7 @@ package ua.com.parad.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.com.parad.dao.CityDao;
@@ -10,7 +11,7 @@ import ua.com.parad.service.CityService;
 
 @Service
 public class CityServiceImpl implements CityService{
-	
+	@Autowired
 	private CityDao cityDao;
 
 	public void create(City city) {

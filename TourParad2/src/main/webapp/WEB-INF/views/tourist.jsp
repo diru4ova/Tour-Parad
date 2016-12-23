@@ -11,8 +11,8 @@
 <a href="allTours"><button>find a tour</button></a>
 <a href="enterToStart"><button>tour exchange</button></a>
 
-<a href="login"><button>log in</button></a>
-<a href="registration"><button>registration</button></a>
+<a href="touristLogin"><button>log in</button></a>
+<a href="touristRegistration"><button>registration</button></a>
 
 </body>
 </html>

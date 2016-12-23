@@ -21,7 +21,6 @@ public class Tourist {
 	private String surname;
 	private String email;
 	private int phone;
-	private String facebook_account;
 	private String password;
 	
 	public Tourist() {
@@ -35,7 +34,6 @@ public class Tourist {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
-		this.facebook_account = facebook_account;
 		this.password = password;
 	}
 
@@ -101,14 +99,6 @@ public class Tourist {
 	}
 
 
-
-	public String getFacebook_account() {
-		return facebook_account;
-	}
-
-	public void setFacebook_account(String facebook_account) {
-		this.facebook_account = facebook_account;
-	}
 
 	public String getPassword() {
 		return password;

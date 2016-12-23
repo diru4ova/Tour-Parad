@@ -12,12 +12,11 @@
 <body>
 
 <form:form modelAttribute="tourist" action="newTourist" method="post">
-	<form:input path="name"/>
-	<form:input path="surname"/>
-	<form:input path="email"/>
-	<form:input path="phone"/>
-	<form:input path="facebook_account"/>
-	<form:input path="password"/>
+	<form:input path="name" placeholder="name"/>
+	<form:input path="surname" placeholder="surname"/>
+	<form:input path="email" type="email" placeholder="email"/>
+	<form:input path="phone" placeholder="phone"/>
+	<form:input path="password" type="password" placeholder="password"/>
 		
 	
 	<button>save tourist</button>   

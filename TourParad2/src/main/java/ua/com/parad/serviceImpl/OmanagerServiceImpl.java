@@ -2,6 +2,7 @@ package ua.com.parad.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.com.parad.dao.OmanagerDao;
@@ -10,7 +11,7 @@ import ua.com.parad.service.OmanagerService;
 
 @Service
 public class OmanagerServiceImpl implements OmanagerService{
-	
+	@Autowired
 	private OmanagerDao omanagerDao;
 
 	public void create(Omanager oManager) {
