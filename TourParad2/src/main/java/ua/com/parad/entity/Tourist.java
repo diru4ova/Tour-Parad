@@ -1,8 +1,11 @@
 package ua.com.parad.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,9 +14,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 
 @Entity
-public class Tourist {
+public class Tourist implements UserDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -23,10 +30,13 @@ public class Tourist {
 	private int phone;
 	private String password;
 	
+	@Enumerated
+	private Role role;
+	
+	
 	public Tourist() {
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	
 	public Tourist(String name, String surname, String email, int phone, String facebook_account, String password) {
@@ -130,6 +140,78 @@ public class Tourist {
 
 	public void setChats(List<Chat> chats) {
 		this.chats = chats;
+	}
+	
+	
+	public Role getRole() {
+		return role;
+	}
+
+
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+
+
+	public void setTours(List<Tour> tours) {
+		this.tours = tours;
+	}
+
+
+
+	
+
+
+
+	@Override
+	public String toString() {
+		return "Tourist [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + ", phone=" + phone
+				+ ", password=" + password + ", role=" + role + ", city=" + city + ", tours=" + tours + ", chats="
+				+ chats + "]";
+	}
+
+
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+		authorities.add(new SimpleGrantedAuthority(role.name()));
+		return authorities;
+	}
+
+
+
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return String.valueOf(id);
+	}
+
+
+
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+
+
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 	

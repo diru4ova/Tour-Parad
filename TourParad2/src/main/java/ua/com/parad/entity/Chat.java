@@ -23,20 +23,24 @@ public class Chat {
 	private int id;
 	private String theme;
 	private String text;
+	private String shortText;
 	private Date date;
 	
 	public Chat() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Chat(String theme, String text, Date date) {
+	public Chat(String theme, String text, String shortText, Date date) {
 		super();
 		this.theme = theme;
 		this.text = text;
+		this.shortText = shortText;
 		this.date = date;
 	}
 	
 	
+	
+
 	@OneToMany(mappedBy="chat")
 	private List <Country> countries;
 	
@@ -83,6 +87,16 @@ public class Chat {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	
+	public String getShortText() {
+		return shortText;
+	}
+
+	public void setShortText(String shortText) {
+		this.shortText = shortText;
+	}
+
 
 	public Date getDate() {
 		return date;

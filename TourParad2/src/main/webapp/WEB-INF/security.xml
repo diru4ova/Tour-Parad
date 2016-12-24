@@ -10,12 +10,14 @@
     <import resource="appContext.xml"/>
 
     <security:http>
-        <security:form-login login-page="/loginpage" login-processing-url="/loginprocesing" 
-        authentication-success-forward-url="/home"/>
+        <security:form-login login-page="/touristLogin" login-processing-url="/loginprocess" 
+        authentication-success-forward-url="/tourist"/>
 
         <security:intercept-url pattern="/" access="permitAll()"/>
 
         <security:logout logout-url="/logout" logout-success-url="/"/>
+        
+        <security:remember-me key="myApp" user-service-ref="touristDetailsService"/>
         
     </security:http>
 
@@ -25,7 +27,7 @@
                 <security:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
             </security:user-service>
         </security:authentication-provider>
-        <security:authentication-provider user-service-ref="userDetailsService">
+        <security:authentication-provider user-service-ref="touristDetailsService">
             <security:password-encoder ref="encoder"/>
         </security:authentication-provider>
     </security:authentication-manager>

@@ -31,7 +31,7 @@ public class TouristController {
 	@RequestMapping (value="/touristLogin", method=RequestMethod.POST)
 	public String loginprocess(){
 					
-		return "touristProfile";
+		return "redirect:/tourist";
 		
 		
 		
@@ -44,14 +44,16 @@ public class TouristController {
 		
 	}
 	
-	//do not work
+	
 	@RequestMapping(value="/newTourist", method=RequestMethod.POST)
 	public String newTourist(@ModelAttribute Tourist tourist){
 		
 		touristService.create(tourist);
 		
-		return "successReg";
+		return "redirect:/touristLogin";
 	} 
+	
+	
 	
 	
 	

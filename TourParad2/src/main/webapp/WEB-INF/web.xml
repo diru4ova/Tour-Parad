@@ -16,7 +16,7 @@
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <!-- <filter>
+   <filter>
     <filter-name>springSecurityFilterChain</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
@@ -30,7 +30,7 @@
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener> -->
+  </listener> 
 
   <!-- <error-page>
     <location>/views/error/error404.jsp</location>

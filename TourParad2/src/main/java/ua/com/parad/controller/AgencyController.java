@@ -70,6 +70,18 @@ public class AgencyController {
 		model.addAttribute("agency", agency);
 		return "myAgency";
 	}
+	
+	@RequestMapping(value="/agentOrders", method=RequestMethod.GET)
+	public String agentOrders(){		
+		return "myAgency";
+	}
+	// change  - fetch with managers
+	@RequestMapping(value="/agentChats", method=RequestMethod.GET)
+	public String agentChats(Model model, Principal principal){
+		Agency agency = agencyServise.getOne(Integer.parseInt(principal.getName()));
+		model.addAttribute("agents", agency.getaManagers());
+		return "agentChats";
+	}
 
 
 }

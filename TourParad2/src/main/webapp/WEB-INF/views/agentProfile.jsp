@@ -18,18 +18,26 @@
 <a href="myTours"><button>my tours</button></a><br>
 <br>
 
-<!-- <core:forEach var="tour" items="${tours}">
+
+<!-- 
+<div background="blue">
+<core:forEach var="tour" items="${tours}">
 	${tour.name } ${tour.price}
 	
 </core:forEach>
+</div>
  -->
  
-<!--  <core:forEach var="chat" items="${chats}">
-	<div background="yellow"
-	${chat.theme } ${tour.date}>
-	</div>
+<!-- 
+<div background="yellow">
+ <core:forEach var="chat" items="${chats}">
+	 background="yellow"
+	${chat.theme } ${tour.date}
 	
-</core:forEach>--> 
+	
+</core:forEach>
+</div>
+--> 
 
 
 

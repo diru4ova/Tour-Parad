@@ -11,8 +11,8 @@
 </head>
 <body>
 
-<form:form action="loginprocess" method="post">
-	<input name="name" type="text" placeholder="login">
+<form:form action="loginprocess" >
+	<input name="username" type="text" placeholder="login">
 	<input name="password" type="password" placeholder="password">
 	<button>log in</button>
 	

@@ -28,4 +28,9 @@ public class MainController {
 		return "enterToStart";
 		
 	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.POST)
+	public String logout(){
+		return "redirect:/";
+	}
 }

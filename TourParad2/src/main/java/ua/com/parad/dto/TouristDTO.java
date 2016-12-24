@@ -4,7 +4,6 @@ public class TouristDTO {
 	
 	private int id;
 	private String name;
-	private String surname;
 	private String email;
 	private int phone;
 	
@@ -14,11 +13,10 @@ public class TouristDTO {
 	}
 
 
-	public TouristDTO(int id, String name, String surname, String email, int phone) {
+	public TouristDTO(int id, String name,  String email, int phone) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.surname = surname;
 		this.email = email;
 		this.phone = phone;
 	}
@@ -44,14 +42,7 @@ public class TouristDTO {
 	}
 
 
-	public String getSurname() {
-		return surname;
-	}
-
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+	
 
 
 	public String getEmail() {
@@ -76,7 +67,7 @@ public class TouristDTO {
 
 	@Override
 	public String toString() {
-		return "TouristDTO [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + ", phone="
+		return "TouristDTO [id=" + id + ", name=" + name +  ", email=" + email + ", phone="
 				+ phone + "]";
 	}
 	
