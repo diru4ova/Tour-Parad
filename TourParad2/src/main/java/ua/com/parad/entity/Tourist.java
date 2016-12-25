@@ -33,7 +33,12 @@ public class Tourist implements UserDetails {
 	@Enumerated
 	private Role role;
 	
+	private String pathImage;
 	
+	
+	
+
+
 	public Tourist() {
 		// TODO Auto-generated constructor stub
 	}
@@ -155,8 +160,14 @@ public class Tourist implements UserDetails {
 
 
 
-	public void setTours(List<Tour> tours) {
-		this.tours = tours;
+		
+	public String getPathImage() {
+		return pathImage;
+	}
+
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
 	}
 
 

@@ -1,7 +1,11 @@
 package ua.com.parad.serviceImpl;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import ua.com.parad.dao.TouristDao;
 import ua.com.parad.entity.Role;
@@ -60,6 +66,32 @@ public class TouristServiceImpl implements TouristService, UserDetailsService{
 	public Tourist findByName(String name) {
 		return touristDao.findByName(name);
 	}
+
+	@Transactional
+    public void saveImage(Principal principal, MultipartFile multipartFile) {
+
+        Tourist tourist = touristDao.findOne(Integer.parseInt(principal.getName()));
+
+        String path = System.getProperty("catalina.home") + "/resources/"
+                + tourist.getName() + "/" + multipartFile.getOriginalFilename();
+
+        tourist.setPathImage("resources/" + tourist.getName() + "/" + multipartFile.getOriginalFilename());
+
+        File file = new File(path);
+
+        try {
+            file.mkdirs();
+            try {
+                FileUtils.cleanDirectory
+                        (new File(System.getProperty("catalina.home") + "/resources/" + tourist.getName() + "/"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            multipartFile.transferTo(file);
+        } catch (IOException e) {
+            System.out.println("smth wrong with your file");
+        }
+    }
 	
 	
 

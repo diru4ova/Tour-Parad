@@ -10,16 +10,29 @@
 </head>
 <body>
 
+
+
 <sec:authentication property="name" />
 
 <sec:authorize access="isAuthenticated()">
+
+${tourist.name} ${tourist.email}
 
 	<form:form action="logout" method="post">
 		<button>logout</button>
 	</form:form>
 </sec:authorize>
 
-Sorry, this page is not available yet(((
+<img alt="add photo" src="${tourist.pathImage}">
+
+<form:form action="./saveImage?${_csrf.parameterName}=${_csrf.token}"
+	method="post" enctype="multipart/form-data">
+	
+	<input type="file" name="image">
+	
+	<button>save image</button>
+
+</form:form>
 
 
 </body>

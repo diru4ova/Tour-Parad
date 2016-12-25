@@ -1,11 +1,15 @@
 package ua.com.parad.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import ua.com.parad.entity.Tourist;
 import ua.com.parad.service.TouristService;
@@ -75,6 +79,15 @@ public class TouristController {
 		
 		return "redirect:/touristLogin";
 	} 
+	
+	
+	@RequestMapping(value="/saveImage", method=RequestMethod.POST)
+	public String saveImage(Principal principal, @RequestParam MultipartFile image){
+		
+		touristService.saveImage(principal, image);
+		
+		return "redirect:/touristProfile";
+	}
 	
 	
 	
