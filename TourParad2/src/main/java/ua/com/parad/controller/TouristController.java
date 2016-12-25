@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ua.com.parad.entity.Tourist;
 import ua.com.parad.service.TouristService;
+import ua.com.parad.validator.TouristValidationMessages;
 
 @Controller
 public class TouristController {
@@ -46,9 +47,31 @@ public class TouristController {
 	
 	
 	@RequestMapping(value="/newTourist", method=RequestMethod.POST)
-	public String newTourist(@ModelAttribute Tourist tourist){
+	public String newTourist(@ModelAttribute Tourist tourist, Model model){
 		
-		touristService.create(tourist);
+		try {
+			touristService.create(tourist);
+		} catch (Exception e) {
+			
+			if(e.getMessage().equals(TouristValidationMessages.EMPTY_NAME_FIELD)){
+				model.addAttribute("usernameException", e.getMessage());
+			}else if(e.getMessage().equals(TouristValidationMessages.EMAIL_ALREADY_EXSISTS)||
+					e.getMessage().equals(TouristValidationMessages.EMPTY_EMAIL_FIELD)){
+				model.addAttribute("emailException", e.getMessage());
+			}else if(e.getMessage().equals(TouristValidationMessages.INVALID_EMAIL)){
+				model.addAttribute("invalidEmail", e.getMessage());
+			}else if(e.getMessage().equals(TouristValidationMessages.EMPTY_PHONE_FIELD)){
+				model.addAttribute("emptyPhone", e.getMessage());
+			}else if(e.getMessage().equals(TouristValidationMessages.PHONE_ALREADY_EXSISTS)){
+				model.addAttribute("phoneExists", e.getMessage());
+			}else if(e.getMessage().equals(TouristValidationMessages.EMPTY_PASSWORD_FIELD)){
+				model.addAttribute("emptyPassword", e.getMessage());		
+			}else if(e.getMessage().equals(TouristValidationMessages.INVALID_PASSWORD)){
+				model.addAttribute("invalidPassword", e.getMessage());		
+			}
+			
+			return "touristRegistration";
+		}
 		
 		return "redirect:/touristLogin";
 	} 

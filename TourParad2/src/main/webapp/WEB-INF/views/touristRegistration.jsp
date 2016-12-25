@@ -12,12 +12,28 @@
 <body>
 
 <form:form modelAttribute="tourist" action="newTourist" method="post">
-	<form:input path="name" placeholder="name"/>
-	<form:input path="surname" placeholder="surname"/>
-	<form:input path="email" type="email" placeholder="email"/>
-	<form:input path="phone" placeholder="phone"/>
-	<form:input path="password" type="password" placeholder="password"/>
-		
+	<p>
+	<div><label for="msg">${usernameException}</label></div>
+	<form:input path="name" placeholder="name" id="msg"/><br>
+	</p>
+	<p>
+	<form:input path="surname" placeholder="surname"/><br>
+	</p>
+	<p>
+	<div><label for="msg">${emailException}</label></div>
+	<!--  <label for="msg2">${invalidEmail}</label>-->
+	<form:input path="email" type="email" placeholder="email" id="msg" /><br>
+	</p>
+	<p>
+	<div><label for="msg">${emptyPhone}</label></div>
+	<!-- <label for="msg2">${phoneExists}</label> -->
+	<form:input path="phone" placeholder="phone" id="msg" /><br>
+	</p>
+	<p>
+	<div><label for="msg">${emptyPassword}</label></div>
+	<!-- <label for="msg2">${invalidPassword}</label> -->
+	<form:input path="password" type="password" placeholder="password" id="msg" />
+	</p>	
 	
 	<button>save tourist</button>   
 </form:form>

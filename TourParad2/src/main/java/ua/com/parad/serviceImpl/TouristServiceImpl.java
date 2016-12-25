@@ -3,6 +3,7 @@ package ua.com.parad.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,18 +14,24 @@ import ua.com.parad.dao.TouristDao;
 import ua.com.parad.entity.Role;
 import ua.com.parad.entity.Tourist;
 import ua.com.parad.service.TouristService;
+import ua.com.parad.validator.Validator;
 
 @Service("touristDetailsService")
 public class TouristServiceImpl implements TouristService, UserDetailsService{
 	
 	@Autowired
 	private TouristDao touristDao;
+	@Autowired
+	@Qualifier("touristValidator")
+	private Validator validator;
 	
 	@Autowired
     private BCryptPasswordEncoder encoder;
 	
 
-	public void create(Tourist tourist) {
+	public void create(Tourist tourist) throws Exception {
+		validator.validate(tourist);
+		
 		tourist.setRole(Role.ROLE_TOURIST);
 		tourist.setPassword(encoder.encode(tourist.getPassword()));
 		touristDao.save(tourist);
