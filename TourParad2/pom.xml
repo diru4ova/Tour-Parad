@@ -12,7 +12,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <spring>4.3.1.RELEASE</spring>
     </properties>
 
-   <!-- <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -25,7 +25,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                 </configuration>
             </plugin>
         </plugins>
-    </build>  -->
+    </build> 
 
 
     <dependencies>

@@ -11,7 +11,10 @@
 </head>
 <body>
 
-<form:form action="loginprocess" >
+<form:form action="loginprocess" method="post">
+
+ <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+
 	<input name="username" type="text" placeholder="login">
 	<input name="password" type="password" placeholder="password">
 	<button>log in</button>

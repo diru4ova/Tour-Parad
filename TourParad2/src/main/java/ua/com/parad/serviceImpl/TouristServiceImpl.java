@@ -35,7 +35,7 @@ public class TouristServiceImpl implements TouristService, UserDetailsService{
     private BCryptPasswordEncoder encoder;
 	
 
-	public void create(Tourist tourist) throws Exception {
+	public void create(Tourist tourist) throws Exception  {
 		validator.validate(tourist);
 		
 		tourist.setRole(Role.ROLE_TOURIST);
@@ -84,7 +84,7 @@ public class TouristServiceImpl implements TouristService, UserDetailsService{
             try {
                 FileUtils.cleanDirectory
                         (new File(System.getProperty("catalina.home") + "/resources/" + tourist.getName() + "/"));
-            } catch (IOException e) {
+          } catch (IOException e) {
                 e.printStackTrace();
             }
             multipartFile.transferTo(file);

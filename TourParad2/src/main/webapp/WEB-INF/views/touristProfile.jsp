@@ -16,14 +16,19 @@
 
 <sec:authorize access="isAuthenticated()">
 
-${tourist.name} ${tourist.email}
+${tourist.name} 
 
 	<form:form action="logout" method="post">
 		<button>logout</button>
 	</form:form>
+	
+	<a href="updateProfile"><button>my info</button></a>
+	
+	
+	
 </sec:authorize>
 
-<img alt="add photo" src="${tourist.pathImage}">
+<img alt="add photo" src="${tourist.pathImage}" width="500px" height="500px">
 
 <form:form action="./saveImage?${_csrf.parameterName}=${_csrf.token}"
 	method="post" enctype="multipart/form-data">

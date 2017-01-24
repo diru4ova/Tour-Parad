@@ -2,7 +2,7 @@ package ua.com.parad.validator;
 
 public interface TouristValidationMessages {
 	
-	String EMPTY_NAME_FIELD = "вкажіть ім'я";
+	String EMPTY_NAME_FIELD = "please, enter your name";
 	String EMPTY_SURNAME_FIELD = "empty surname field";
 	String EMPTY_EMAIL_FIELD = "вкажіть e-mail";
 	String EMPTY_PHONE_FIELD = "вкажіть телефон";

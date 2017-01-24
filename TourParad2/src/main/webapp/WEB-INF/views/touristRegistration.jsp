@@ -10,9 +10,24 @@
 <title>Registration</title>
 </head>
 <body>
+${tourists}
+${tourist}
 
 <form:form modelAttribute="tourist" action="newTourist" method="post">
-	<p>
+
+	<div style="text-align: center; color: red; margin: 5px">
+		<label for="msg">${usernameException}</label></div>
+	<form:input path="name" type="text"
+		class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
+		placeholder="name" id="name"/><br>
+	<form:input path="password" type="password" placeholder="password" />
+	
+	
+	
+	
+	
+
+	<%-- <p>
 	<div><label for="msg">${usernameException}</label></div>
 	<form:input path="name" placeholder="name" id="msg"/><br>
 	</p>
@@ -34,8 +49,14 @@
 	<!-- <label for="msg2">${invalidPassword}</label> -->
 	<form:input path="password" type="password" placeholder="password" id="msg" />
 	</p>	
-	
-	<button>save tourist</button>   
+	 --%>
+		
+	 
+	<%--<button>save tourist</button>   --%>
+	<div class="submit">
+			<input type="submit" value="SEND" id="button-blue" />
+						
+	</div>
 </form:form>
 
 

@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<sec:authentication property="name" />
+
 <sec:authorize access="!isAuthenticated()">
 	
 
@@ -26,12 +28,26 @@
 
 <sec:authorize access="isAuthenticated()">
 
+${tourist.name} 
+
 	<form:form action="logout" method="post">
 		<button>logout</button>
 	</form:form>
 	
-	<a href="touristProfile"><button>my profile</button></a>
+		<a href="touristProfile"><button>my profile</button></a>
+	
+	
+	
 </sec:authorize>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+
+	<a href="admin">admin page</a>
+
+</sec:authorize>
+
+
+
 
 </body>
 </html>
