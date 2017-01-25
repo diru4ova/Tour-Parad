@@ -7,36 +7,39 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.validation.BindingResult;
+//import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
 import ua.com.parad.dao.TouristDao;
 import ua.com.parad.entity.Role;
 import ua.com.parad.entity.Tourist;
 import ua.com.parad.service.TouristService;
-import ua.com.parad.validator.Validator;
+//import ua.com.parad.validator.TouristValidator;
+//import ua.com.parad.validator.Validator;
 
 @Service("touristDetailsService")
 public class TouristServiceImpl implements TouristService, UserDetailsService{
 	
 	@Autowired
 	private TouristDao touristDao;
-	@Autowired
-	@Qualifier("touristValidator")
-	private Validator validator;
+	//@Autowired
+	//@Qualifier("touristValidator")
+	//private TouristValidator validator;
 	
 	@Autowired
     private BCryptPasswordEncoder encoder;
 	
 
 	public void create(Tourist tourist) throws Exception  {
-		validator.validate(tourist);
+		//validator.validate(tourist, result);
 		
 		tourist.setRole(Role.ROLE_TOURIST);
 		tourist.setPassword(encoder.encode(tourist.getPassword()));

@@ -3,6 +3,8 @@ package ua.com.parad.service;
 import java.security.Principal;
 import java.util.List;
 
+//import org.springframework.validation.BindingResult;
+//import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
 import ua.com.parad.entity.Tourist;

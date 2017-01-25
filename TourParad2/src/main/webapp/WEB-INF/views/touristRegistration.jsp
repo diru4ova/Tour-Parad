@@ -15,12 +15,20 @@ ${tourist}
 
 <form:form modelAttribute="tourist" action="newTourist" method="post">
 
-	<div style="text-align: center; color: red; margin: 5px">
+	<%--><div style="text-align: center; color: red; margin: 5px">
 		<label for="msg">${usernameException}</label></div>
 	<form:input path="name" type="text"
 		class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
 		placeholder="name" id="name"/><br>
+	<form:input path="password" type="password" placeholder="password" />--%>
+	
+	
+	<form:input path="name" type="text" placeholder="name"/>
+	<form:errors path="name"></form:errors>
 	<form:input path="password" type="password" placeholder="password" />
+	
+	
+	
 	
 	
 	

@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,11 +16,15 @@ import ua.com.parad.dto.DtoUtilMapper;
 import ua.com.parad.entity.Tourist;
 import ua.com.parad.service.TouristService;
 import ua.com.parad.validator.TouristValidationMessages;
+import ua.com.parad.validator.TouristValidator;
 
 @Controller
 public class TouristController {
 	@Autowired
 	private TouristService touristService;
+	
+	@Autowired
+	private TouristValidator validator;
 	
 	@RequestMapping(value="/tourist", method=RequestMethod.GET)
 	public String enterAsTourist(){
@@ -56,6 +61,17 @@ public class TouristController {
 		
 	}
 	
+	@RequestMapping(value="/newTourist", method=RequestMethod.POST)
+	public String newTourist(@ModelAttribute Tourist tourist, Model model, BindingResult result) throws Exception{
+		validator.validate(tourist, result);
+		if(result.hasErrors()){
+			return "touristRegistration";
+		}
+		touristService.create(tourist);
+		
+		return "redirect:/touristLogin";
+	}
+	
 	/*@RequestMapping (value="/touristRegistration", method=RequestMethod.POST)
 	public String tregistration(Model model){
 		model.addAttribute("tourists", DtoUtilMapper.touristsToTouristsDTO(touristService.getAll()) );
@@ -65,8 +81,8 @@ public class TouristController {
 	}*/
 	
 	
-	@RequestMapping(value="/newTourist", method=RequestMethod.POST)
-	public String newTourist(@ModelAttribute Tourist tourist, Model model) throws Exception{
+	/*@RequestMapping(value="/newTourist", method=RequestMethod.POST)
+	public String newTourist(@ModelAttribute Tourist tourist, Model model, BindingResult result) throws Exception{
 		
 		
 		
@@ -80,12 +96,12 @@ public class TouristController {
 			
 			if(e.getMessage().equals(TouristValidationMessages.EMPTY_NAME_FIELD)){
 				model.addAttribute("usernameException", e.getMessage());
-				/*System.out.println(tourist);
+				System.out.println(tourist);
 				
-				return "touristRegistration";*/
+				return "touristRegistration";
 			}
 			
-			/*else if(e.getMessage().equals(TouristValidationMessages.EMAIL_ALREADY_EXSISTS)||
+			else if(e.getMessage().equals(TouristValidationMessages.EMAIL_ALREADY_EXSISTS)||
 					e.getMessage().equals(TouristValidationMessages.EMPTY_EMAIL_FIELD)){
 				model.addAttribute("emailException", e.getMessage());
 			}else if(e.getMessage().equals(TouristValidationMessages.INVALID_EMAIL)){
@@ -98,7 +114,7 @@ public class TouristController {
 				model.addAttribute("emptyPassword", e.getMessage());		
 			}else if(e.getMessage().equals(TouristValidationMessages.INVALID_PASSWORD)){
 				model.addAttribute("invalidPassword", e.getMessage());		
-			}*/
+			}
 			
 			System.out.println(tourist);
 			
@@ -109,7 +125,7 @@ public class TouristController {
 		return "redirect:/touristLogin";
 		
 	} 
-	
+	*/
 	
 	@RequestMapping(value="/saveImage", method=RequestMethod.POST)
 	public String saveImage(Principal principal, @RequestParam MultipartFile image){

@@ -10,6 +10,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   
   <properties>
         <spring>4.3.1.RELEASE</spring>
+        <apache.tiles>3.0.5</apache.tiles>       
+        <spring.framework>4.3.10.Final</spring.framework>
     </properties>
 
     <build>
@@ -144,22 +146,22 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <!--    <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-template</artifactId>
-            <version>3.0.5</version>
+            <version>${apache.tiles}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-core</artifactId>
-            <version>3.0.5</version>
+            <version>${apache.tiles}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
-            <version>3.0.5</version>
+            <version>${apache.tiles}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-servlet</artifactId>
-            <version>3.0.5</version>
+            <version>${apache.tiles}</version>
         </dependency>
 -->
 
@@ -243,6 +245,17 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <artifactId>jackson-core</artifactId>
             <version>2.8.1</version>
         </dependency>  -->
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.3.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
 
     </dependencies>
   
