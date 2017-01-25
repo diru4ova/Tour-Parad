@@ -35,6 +35,9 @@ public class Tourist implements UserDetails {
 	
 	private String pathImage;
 	
+	private boolean enabled;
+	private String uuid;
+	
 	
 	
 
@@ -222,7 +225,22 @@ public class Tourist implements UserDetails {
 
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		return enabled;
+	}
+
+
+	public String getUuid() {
+		return uuid;
+	}
+
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	

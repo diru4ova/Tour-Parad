@@ -1,12 +1,14 @@
 package ua.com.parad.controller;
 
 import java.security.Principal;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import ua.com.parad.dto.DtoUtilMapper;
 import ua.com.parad.entity.Tourist;
+import ua.com.parad.service.MailSenderService;
 import ua.com.parad.service.TouristService;
 import ua.com.parad.validator.TouristValidationMessages;
 import ua.com.parad.validator.TouristValidator;
@@ -25,6 +28,9 @@ public class TouristController {
 	
 	@Autowired
 	private TouristValidator validator;
+	
+	@Autowired
+	private MailSenderService mailSenderService;
 	
 	@RequestMapping(value="/tourist", method=RequestMethod.GET)
 	public String enterAsTourist(){
@@ -63,13 +69,32 @@ public class TouristController {
 	
 	@RequestMapping(value="/newTourist", method=RequestMethod.POST)
 	public String newTourist(@ModelAttribute Tourist tourist, Model model, BindingResult result) throws Exception{
+		
+		String uuid = UUID.randomUUID().toString();
+		tourist.setUuid(uuid);
+		
 		validator.validate(tourist, result);
 		if(result.hasErrors()){
 			return "touristRegistration";
 		}
 		touristService.create(tourist);
 		
-		return "redirect:/touristLogin";
+		String theme = "registration confirmation";
+		String text = "http://localhost:8080/TourParad2/confirm/" + uuid;
+		mailSenderService.sendEmail(theme, text, tourist.getEmail());
+		
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/confirm/{uuid}", method=RequestMethod.GET)
+	public String confirm (@PathVariable String uuid){
+		
+		Tourist tourist = touristService.findByUuid(uuid);
+		tourist.setEnabled(true);
+		touristService.update(tourist);
+		
+		return "redirect:/";
 	}
 	
 	/*@RequestMapping (value="/touristRegistration", method=RequestMethod.POST)

@@ -95,6 +95,14 @@ public class TouristServiceImpl implements TouristService, UserDetailsService{
             System.out.println("smth wrong with your file");
         }
     }
+
+	public Tourist findByUuid(String uuid) {
+		return touristDao.findByUuid(uuid);
+	}
+
+	public void update(Tourist tourist) {
+		touristDao.save(tourist);
+	}
 	
 	
 

@@ -14,5 +14,8 @@ public interface TouristDao extends JpaRepository <Tourist, Integer>{
 	public boolean findByEmail(@Param("email") String email);
 	
 	public Tourist findByPhone(int phone);
+	
+	@Query("Select t from Tourist t where t.uuid =:uuid")
+	public Tourist findByUuid(@Param("uuid")String uuid);
 
 }

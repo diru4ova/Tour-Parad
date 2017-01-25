@@ -17,5 +17,9 @@ public interface TouristService {
 	void delete (int id);
 	
 	public void saveImage(Principal principal, MultipartFile multipartFile);
+	
+	public Tourist findByUuid(String uuid);
+	
+	public void update (Tourist tourist);
 
 }
