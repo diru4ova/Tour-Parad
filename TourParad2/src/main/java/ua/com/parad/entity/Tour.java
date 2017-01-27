@@ -48,8 +48,8 @@ public class Tour {
 	@ManyToOne
 	private Agency agency;
 	
-	@OneToMany(mappedBy="tour")
-	private List <Country> countries;
+	@ManyToOne
+	private Country country;
 	
 	@ManyToMany
 	@JoinTable(name="aManager_tour",
@@ -141,13 +141,19 @@ public class Tour {
 		this.agency = agency;
 	}
 
-	public List<Country> getCountries() {
-		return countries;
+	
+
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setCountries(List<Country> countries) {
-		this.countries = countries;
+
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
+
+
 
 	public List<Amanager> getaManagers() {
 		return aManagers;

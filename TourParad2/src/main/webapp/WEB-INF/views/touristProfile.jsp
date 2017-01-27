@@ -2,10 +2,19 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<style type="text/css">
+
+div{
+	color: blue;
+}
+</style>
+
 <title>Tourist Profile</title>
 </head>
 <body>
@@ -22,22 +31,28 @@ ${tourist.name}
 		<button>logout</button>
 	</form:form>
 	
-	<a href="updateProfile"><button>my info</button></a>
+	<a href="updateProfile"><button>update profile</button></a>
 	
 	
 	
 </sec:authorize>
 
-<img alt="add photo" src="${tourist.pathImage}" width="500px" height="500px">
+<img alt="profile photo" src="${tourist.pathImage}" width="100px" height="100px">
 
-<form:form action="./saveImage?${_csrf.parameterName}=${_csrf.token}"
-	method="post" enctype="multipart/form-data">
-	
-	<input type="file" name="image">
-	
-	<button>save image</button>
 
-</form:form>
+
+
+
+  
+
+<div>
+<c:forEach var="tour" items="${tours}">
+	${tour.name } ${tour.price} 
+	<a href="tourDetails"><button>details</button></a><br>
+	
+</c:forEach>
+
+</div>
 
 
 </body>

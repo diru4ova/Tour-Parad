@@ -20,7 +20,7 @@ public class AgencyController {
 	@Autowired
 	private AgencyService agencyServise;
 	@Autowired
-	private TourService tourservice;
+	private TourService tourService;
 	@Autowired
 	private ChatService chatService;
 	
@@ -59,7 +59,7 @@ public class AgencyController {
 	@RequestMapping(value="/agentProfile", method=RequestMethod.GET)
 	public String agentProfile(Model model){
 		model.addAttribute("chats", chatService.getAll());
-		model.addAttribute("tours", tourservice.getAll());
+		model.addAttribute("tours", tourService.getAll());
 		return "agentProfile";
 	}
 	

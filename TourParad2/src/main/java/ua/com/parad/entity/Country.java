@@ -1,10 +1,13 @@
 package ua.com.parad.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 
@@ -28,12 +31,12 @@ public class Country {
 
 
 
-	@ManyToOne
-	private Tour tour;
+	@OneToMany(mappedBy = "country")
+	private List<Tour> tours;
 	
-	@ManyToOne
-	private Chat chat;
-
+	@OneToMany(mappedBy = "country")
+	private List<Chat> chats;
+	
 	public int getId() {
 		return id;
 	}
@@ -50,21 +53,31 @@ public class Country {
 		this.name = name;
 	}
 
-	public Tour getTour() {
-		return tour;
+
+
+	public List<Tour> getTours() {
+		return tours;
 	}
 
-	public void setTour(Tour tour) {
-		this.tour = tour;
+
+
+	public void setTours(List<Tour> tours) {
+		this.tours = tours;
 	}
 
-	public Chat getChat() {
-		return chat;
+
+
+	public List<Chat> getChats() {
+		return chats;
 	}
 
-	public void setChat(Chat chat) {
-		this.chat = chat;
+
+
+	public void setChats(List<Chat> chats) {
+		this.chats = chats;
 	}
+
+	
 	
 	
 	

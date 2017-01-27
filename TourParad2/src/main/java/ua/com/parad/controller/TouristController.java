@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ua.com.parad.dto.DtoUtilMapper;
 import ua.com.parad.entity.Tourist;
 import ua.com.parad.service.MailSenderService;
+import ua.com.parad.service.TourService;
 import ua.com.parad.service.TouristService;
 import ua.com.parad.validator.TouristValidationMessages;
 import ua.com.parad.validator.TouristValidator;
@@ -31,6 +32,9 @@ public class TouristController {
 	
 	@Autowired
 	private MailSenderService mailSenderService;
+	
+	@Autowired
+	private TourService tourService;
 	
 	@RequestMapping(value="/tourist", method=RequestMethod.GET)
 	public String enterAsTourist(){
@@ -170,9 +174,33 @@ public class TouristController {
 	
 	@RequestMapping (value="/touristProfile", method=RequestMethod.GET)
 	public String touristProfileGet(Principal principal, Model model){
-		//model.addAttribute("tourist", new Tourist());
+		
 		model.addAttribute("tourist", touristService.getOne(Integer.parseInt(principal.getName())));
+		model.addAttribute("tours", tourService.getAll());
 		return "touristProfile";
+		
+	}
+	
+	@RequestMapping (value="/updateProfile", method=RequestMethod.GET)
+	public String updateProfile(Principal principal, Model model){
+		
+		model.addAttribute("tourist", touristService.getOne(Integer.parseInt(principal.getName())));
+		
+		return "updateProfile";
+		
+	}
+	@RequestMapping (value="/updateProfile", method=RequestMethod.POST)
+	public String update(Principal principal, @RequestParam String name,
+			@RequestParam String password,
+			@RequestParam String email){
+		
+		Tourist tourist =  touristService.getOne(Integer.parseInt(principal.getName()));
+		tourist.setName(name);
+		tourist.setPassword(password);
+		tourist.setEmail(email);
+		touristService.update(tourist);
+		
+		return "redirect:/touristProfile";
 		
 	}
 	

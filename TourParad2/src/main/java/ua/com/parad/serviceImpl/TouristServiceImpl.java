@@ -101,6 +101,7 @@ public class TouristServiceImpl implements TouristService, UserDetailsService{
 	}
 
 	public void update(Tourist tourist) {
+		tourist.setPassword(encoder.encode(tourist.getPassword()));
 		touristDao.save(tourist);
 	}
 	

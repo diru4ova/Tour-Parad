@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -41,8 +42,8 @@ public class Chat {
 	
 	
 
-	@OneToMany(mappedBy="chat")
-	private List <Country> countries;
+	@ManyToOne
+	private Country country;
 	
 	@ManyToMany
 	@JoinTable(name="tourist_chat",
@@ -106,12 +107,13 @@ public class Chat {
 		this.date = date;
 	}
 
-	public List<Country> getCountries() {
-		return countries;
+	
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setCountries(List<Country> countries) {
-		this.countries = countries;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	public List<Tourist> getTourists() {

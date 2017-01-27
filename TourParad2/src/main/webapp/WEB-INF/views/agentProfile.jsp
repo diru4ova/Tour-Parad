@@ -19,25 +19,30 @@
 <br>
 
 
-<!-- 
+
 <div background="blue">
 <core:forEach var="tour" items="${tours}">
-	${tour.name } ${tour.price}
+	${tour.name } ${tour.price}<br>
 	
 </core:forEach>
+<a href="newTour"><button>create tour</button></a><br>
 </div>
- -->
  
-<!-- 
+ 
+ 
 <div background="yellow">
  <core:forEach var="chat" items="${chats}">
-	 background="yellow"
-	${chat.theme } ${tour.date}
+	 
+	${chat.theme } ${tour.date}<br>
 	
 	
 </core:forEach>
+
 </div>
---> 
+
+<a href="main">main page</a><br>
+
+ 
 
 
 
