@@ -31,7 +31,9 @@ ${tourist.name}
 		<button>logout</button>
 	</form:form>
 	
-	<a href="updateProfile"><button>update profile</button></a>
+	
+	
+	<a href="updateProfile"><button>update profile</button></a><br>
 	
 	
 	
@@ -48,12 +50,13 @@ ${tourist.name}
 <div>
 <c:forEach var="tour" items="${tours}">
 	${tour.name } ${tour.price} 
-	<a href="tourDetails"><button>details</button></a><br>
+	<a href="tourDetails/${tour.id}"><button>details</button></a><br>
 	
 </c:forEach>
 
 </div>
 
+<a href="basket">basket</a><br>
 
 </body>
 </html>

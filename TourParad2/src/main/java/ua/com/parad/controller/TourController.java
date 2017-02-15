@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,6 +46,12 @@ public class TourController {
 	public String createTour(@ModelAttribute Tour tour){
 		tourService.create(tour);
 		return "redirect:/agentProfile";
+	}
+	
+	@RequestMapping(value="/tourDetails/{id}", method=RequestMethod.GET)
+	public String newTour(@PathVariable int id, Model model){
+		model.addAttribute("tour", tourService.getOne(id));
+		return "tourDetails";
 	}
 	
 	
